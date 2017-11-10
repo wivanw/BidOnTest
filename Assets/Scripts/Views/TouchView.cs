@@ -6,6 +6,7 @@ namespace BidOn
     public class TouchView : MonoBehaviour
     {
         public UnityAction<bool> IsTakeEvent;
+        public UnityAction MouseDragEvent;
 
         private void OnMouseDown()
         {
@@ -17,6 +18,11 @@ namespace BidOn
         {
             if (IsTakeEvent != null)
                 IsTakeEvent.Invoke(false);
+        }
+
+        private void OnMouseDrag()
+        {
+            MouseDragEvent.Invoke();
         }
     }
 }

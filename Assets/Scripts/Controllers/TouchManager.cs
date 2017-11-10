@@ -40,7 +40,7 @@ namespace BidOn
         /// <summary>
         /// Control of movement garbage in space following the input touch position.
         /// </summary>
-        private void FixedUpdate()
+        public void TrashDrag()
         {
             if (_currentTrashJoint)
             {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace BidOn
 {
@@ -8,8 +9,16 @@ namespace BidOn
 
         private void Awake()
         {
-            GetComponent<TouchView>().IsTakeEvent += IsTake;
+            var view = GetComponent<TouchView>();
+            view.IsTakeEvent += IsTake;
+            view.MouseDragEvent += MouseDrag;
+
             _model = GetComponent<TrashModel>();
+        }
+
+        private void MouseDrag()
+        {
+            Controller.TouchManager.TrashDrag();
         }
 
         /// <summary>
