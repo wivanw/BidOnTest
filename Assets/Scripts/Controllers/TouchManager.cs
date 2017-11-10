@@ -45,8 +45,15 @@ namespace BidOn
             if (_currentTrashJoint)
             {
                 _currentTrashJoint.connectedAnchor = Camera.main.ScreenToWorldPoint(
-                    Input.mousePosition) + Camera.main.transform.forward * 0.5f;
+                    ClampMousePosition(Input.mousePosition)) + Camera.main.transform.forward * 0.5f;
             }
+        }
+
+        private Vector3 ClampMousePosition(Vector3 mousePosition)
+        {
+            mousePosition.x = Mathf.Clamp(mousePosition.x, 0.0f, Screen.width);
+            mousePosition.y = Mathf.Clamp(mousePosition.y, 0.0f, Screen.height);
+            return mousePosition;
         }
 
         /// <summary>
